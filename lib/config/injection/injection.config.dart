@@ -11,8 +11,11 @@
 import 'package:dartros/dartros.dart' as _i3;
 import 'package:get_it/get_it.dart' as _i1;
 import 'package:injectable/injectable.dart' as _i2;
-import 'package:ros_flutter/config/injection/register_module.dart' as _i5;
-import 'package:shared_preferences/shared_preferences.dart' as _i4;
+import 'package:ros_flutter/config/injection/register_module.dart' as _i8;
+import 'package:ros_flutter/data/repositories/sub_data_impl.dart' as _i5;
+import 'package:ros_flutter/data/sub_data_source.dart' as _i6;
+import 'package:ros_flutter/domain/repositories/sub_repos.dart' as _i4;
+import 'package:shared_preferences/shared_preferences.dart' as _i7;
 
 extension GetItInjectableX on _i1.GetIt {
 // initializes the registration of main-scope dependencies inside of GetIt
@@ -30,7 +33,9 @@ extension GetItInjectableX on _i1.GetIt {
       () => registerModule.nh(),
       preResolve: true,
     );
-    await gh.factoryAsync<_i4.SharedPreferences>(
+    gh.factory<_i4.RosSubRepo>(
+        () => _i5.SubRepositoryImpl(gh<_i6.SubDataSource>()));
+    await gh.factoryAsync<_i7.SharedPreferences>(
       () => registerModule.prefs,
       preResolve: true,
     );
@@ -38,4 +43,4 @@ extension GetItInjectableX on _i1.GetIt {
   }
 }
 
-class _$RegisterModule extends _i5.RegisterModule {}
+class _$RegisterModule extends _i8.RegisterModule {}
