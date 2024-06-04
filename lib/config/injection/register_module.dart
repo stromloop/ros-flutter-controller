@@ -8,12 +8,10 @@ import '../../data/sub_data_source.dart';
 @module
 abstract class RegisterModule {
   // Inject SharedPreferences
-  SubDataSource _subDataSource(NodeHandle nh) {
-    return SubDataSource(nh);
-  }
 
   @preResolve
   Future<SharedPreferences> get prefs => SharedPreferences.getInstance();
+  //TODO possible double invocation - warning during node start (Node already started)
   @preResolve
   Future<dartros.NodeHandle> nh() async {
     final nh = await dartros.initNode('ros_node2', [],
