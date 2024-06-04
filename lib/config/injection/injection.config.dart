@@ -8,15 +8,17 @@
 // coverage:ignore-file
 
 // ignore_for_file: no_leading_underscores_for_library_prefixes
-import 'package:dartros/dartros.dart' as _i3;
+import 'package:dartros/dartros.dart' as _i4;
 import 'package:get_it/get_it.dart' as _i1;
 import 'package:injectable/injectable.dart' as _i2;
-import 'package:ros_flutter/config/injection/data_source_injection.dart' as _i9;
-import 'package:ros_flutter/config/injection/register_module.dart' as _i8;
-import 'package:ros_flutter/data/repositories/sub_data_impl.dart' as _i7;
-import 'package:ros_flutter/data/sub_data_source.dart' as _i5;
-import 'package:ros_flutter/domain/repositories/sub_repos.dart' as _i6;
-import 'package:shared_preferences/shared_preferences.dart' as _i4;
+import 'package:ros_flutter/config/injection/data_source_injection.dart'
+    as _i10;
+import 'package:ros_flutter/config/injection/register_module.dart' as _i9;
+import 'package:ros_flutter/config/router/app_router.dart' as _i3;
+import 'package:ros_flutter/data/repositories/sub_data_impl.dart' as _i8;
+import 'package:ros_flutter/data/sub_data_source.dart' as _i6;
+import 'package:ros_flutter/domain/repositories/sub_repos.dart' as _i7;
+import 'package:shared_preferences/shared_preferences.dart' as _i5;
 
 extension GetItInjectableX on _i1.GetIt {
 // initializes the registration of main-scope dependencies inside of GetIt
@@ -31,22 +33,23 @@ extension GetItInjectableX on _i1.GetIt {
     );
     final registerModule = _$RegisterModule();
     final dataSourceInjectionModule = _$DataSourceInjectionModule();
-    await gh.factoryAsync<_i3.NodeHandle>(
+    gh.singleton<_i3.AppRouter>(() => _i3.AppRouter());
+    await gh.factoryAsync<_i4.NodeHandle>(
       () => registerModule.nh(),
       preResolve: true,
     );
-    await gh.factoryAsync<_i4.SharedPreferences>(
+    await gh.factoryAsync<_i5.SharedPreferences>(
       () => registerModule.prefs,
       preResolve: true,
     );
-    gh.singleton<_i5.SubDataSource>(
-        () => dataSourceInjectionModule.subDataSource(gh<_i3.NodeHandle>()));
-    gh.factory<_i6.RosSubRepo>(
-        () => _i7.SubRepositoryImpl(gh<_i5.SubDataSource>()));
+    gh.singleton<_i6.SubDataSource>(
+        () => dataSourceInjectionModule.subDataSource(gh<_i4.NodeHandle>()));
+    gh.factory<_i7.RosSubRepo>(
+        () => _i8.SubRepositoryImpl(gh<_i6.SubDataSource>()));
     return this;
   }
 }
 
-class _$RegisterModule extends _i8.RegisterModule {}
+class _$RegisterModule extends _i9.RegisterModule {}
 
-class _$DataSourceInjectionModule extends _i9.DataSourceInjectionModule {}
+class _$DataSourceInjectionModule extends _i10.DataSourceInjectionModule {}
