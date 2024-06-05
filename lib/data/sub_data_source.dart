@@ -1,5 +1,4 @@
 import 'package:dartros/dartros.dart';
-import 'package:injectable/injectable.dart';
 import 'package:ros_flutter/domain/models/string.dart';
 
 
