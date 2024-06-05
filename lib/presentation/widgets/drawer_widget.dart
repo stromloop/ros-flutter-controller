@@ -1,4 +1,6 @@
 import 'package:flutter/material.dart';
+import 'package:go_router/go_router.dart';
+import 'package:ros_flutter/utils/constants/route_name.dart';
 
 class RosDrawer extends StatelessWidget {
   const RosDrawer({
@@ -24,9 +26,9 @@ class RosDrawer extends StatelessWidget {
             ),
           ),
           ListTile(
-            leading: const Icon(Icons.message),
-            title: const Text('Messages'),
-            onTap: () {},
+            leading: const Icon(Icons.home),
+            title: const Text('Home'),
+            onTap: () {context.go(RoutePath.home);},
           ),
           ListTile(
             leading: const Icon(Icons.account_circle),
@@ -36,7 +38,9 @@ class RosDrawer extends StatelessWidget {
           ListTile(
             leading: const Icon(Icons.settings),
             title: const Text('Settings'),
-            onTap: () {},
+            onTap: () {
+              context.go(RoutePath.config);
+            },
           ),
         ],
       ),
