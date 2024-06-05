@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 import 'package:ros_flutter/presentation/controllers/param_controller.dart';
+import 'package:ros_flutter/presentation/widgets/drawer_widget.dart';
 
 class ParamPage extends StatefulWidget {
   const ParamPage({super.key, required this.title});
@@ -57,23 +58,10 @@ class _ParamPageState extends State<ParamPage> {
         // Center is a layout widget. It takes a single child and positions it
         // in the middle of the parent.
         child: Column(
-          // Column is also a layout widget. It takes a list of children and
-          // arranges them vertically. By default, it sizes itself to fit its
-          // children horizontally, and tries to be as tall as its parent.
-          //
-          // Column has various properties to control how it sizes itself and
-          // how it positions its children. Here we use mainAxisAlignment to
-          // center the children vertically; the main axis here is the vertical
-          // axis because Columns are vertical (the cross axis would be
-          // horizontal).
-          //
-          // TRY THIS: Invoke "debug painting" (choose the "Toggle Debug Paint"
-          // action in the IDE, or press "p" in the console), to see the
-          // wireframe for each widget.
           mainAxisAlignment: MainAxisAlignment.center,
           children: <Widget>[
             Obx(() {
-              return  Text(
+              return Text(
                 'The current param value - ${controller.paramValue}',
               );
             }),
@@ -91,6 +79,7 @@ class _ParamPageState extends State<ParamPage> {
         tooltip: 'Increment',
         child: const Icon(Icons.add),
       ), // This trailing comma makes auto-formatting nicer for build methods.
+      drawer: const RosDrawer(),
     );
   }
 }
