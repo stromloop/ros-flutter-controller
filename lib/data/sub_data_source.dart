@@ -1,13 +1,21 @@
 import 'package:dartros/dartros.dart';
+import 'package:get/get.dart';
 import 'package:ros_flutter/domain/models/string.dart';
-
+import 'package:ros_flutter/utils/resources/ros_node.dart';
 
 class SubDataSource {
-  NodeHandle _nh;
-  SubDataSource(this._nh);
+  RosHandler ros;
+  SubDataSource(this.ros);
   Future<RosString> getParam() async {
-    String value = await _nh.getParam('/foo');
-    RosString _rosstring = RosString(name: value);
-    return _rosstring;
+    try {
+      String value = await ros.node.getParam('/foo');
+      RosString _rosstring = RosString(name: value);
+      return _rosstring;
+    } catch (e) {
+    //
+       Get.snackbar("Login failed", "Master not connected",
+            snackPosition: SnackPosition.BOTTOM);
+      return RosString(name: "Error");
+    }
   }
 }

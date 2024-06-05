@@ -45,36 +45,36 @@ class _ParamPageState extends State<ParamPage> {
   Widget build(BuildContext context) {
     final controller = Get.put(ParamController());
     return Scaffold(
-      appBar: AppBar(
-        backgroundColor: Theme.of(context).colorScheme.inversePrimary,
-        title: Text(widget.title),
-      ),
-      body: Center(
-        // Center is a layout widget. It takes a single child and positions it
-        // in the middle of the parent.
-        child: Column(
-          mainAxisAlignment: MainAxisAlignment.center,
-          children: <Widget>[
-            Obx(() {
-              return Text(
-                'The current param value - ${controller.paramValue}',
-              );
-            }),
-            Text(
-              '$_counter',
-              style: Theme.of(context).textTheme.headlineMedium,
-            ),
-          ],
+        appBar: AppBar(
+          backgroundColor: Theme.of(context).colorScheme.inversePrimary,
+          title: Text(widget.title),
         ),
-      ),
-      floatingActionButton: FloatingActionButton(
-        onPressed: () {
-          controller.getFoo();
-        },
-        tooltip: 'Increment',
-        child: const Icon(Icons.add),
-      ), // This trailing comma makes auto-formatting nicer for build methods.
-      drawer: const RosDrawer(),
+        body: Center(
+          // Center is a layout widget. It takes a single child and positions it
+          // in the middle of the parent.
+          child: Column(
+            mainAxisAlignment: MainAxisAlignment.center,
+            children: <Widget>[
+              Obx(() {
+                return Text(
+                  'The current param value - ${controller.paramValue}',
+                );
+              }),
+              Text(
+                '$_counter',
+                style: Theme.of(context).textTheme.headlineMedium,
+              ),
+            ],
+          ),
+        ),
+        floatingActionButton: FloatingActionButton(
+          onPressed: () {
+            controller.getFoo();
+          },
+          tooltip: 'Increment',
+          child: const Icon(Icons.add),
+        ), // This trailing comma makes auto-formatting nicer for build methods.
+        drawer: const RosDrawer(),
     );
   }
 }

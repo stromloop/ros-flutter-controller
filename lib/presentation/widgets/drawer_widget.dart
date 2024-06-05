@@ -1,6 +1,8 @@
 import 'package:flutter/material.dart';
 import 'package:go_router/go_router.dart';
+import 'package:ros_flutter/config/injection/injection.dart';
 import 'package:ros_flutter/utils/constants/route_name.dart';
+import 'package:ros_flutter/utils/resources/ros_node.dart';
 
 class RosDrawer extends StatelessWidget {
   const RosDrawer({
@@ -42,6 +44,10 @@ class RosDrawer extends StatelessWidget {
               context.go(RoutePath.config);
             },
           ),
+          ListTile(title: TextButton(onPressed: (){
+            final rosHandler = locator<RosHandler>();
+            rosHandler.initNode();
+          }, child: Text("Connect")))
         ],
       ),
     );
