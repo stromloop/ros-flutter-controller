@@ -15,7 +15,7 @@ import 'package:ros_flutter/config/injection/data_source_injection.dart'
 import 'package:ros_flutter/config/injection/register_module.dart' as _i9;
 import 'package:ros_flutter/config/router/app_router.dart' as _i3;
 import 'package:ros_flutter/data/repositories/sub_data_impl.dart' as _i8;
-import 'package:ros_flutter/data/sub_data_source.dart' as _i6;
+import 'package:ros_flutter/data/data_source/dartros_1/sub_data_source.dart' as _i6;
 import 'package:ros_flutter/domain/repositories/sub_repos.dart' as _i7;
 import 'package:ros_flutter/utils/resources/ros_node.dart' as _i5;
 import 'package:shared_preferences/shared_preferences.dart' as _i4;

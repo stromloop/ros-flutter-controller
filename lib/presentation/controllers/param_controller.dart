@@ -1,6 +1,6 @@
 import 'package:get/get.dart';
 import 'package:ros_flutter/config/injection/injection.dart';
-import 'package:ros_flutter/data/sub_data_source.dart';
+import 'package:ros_flutter/data/data_source/dartros_1/sub_data_source.dart';
 
 class ParamController extends GetxController {
   final paramValue = ''.obs;
