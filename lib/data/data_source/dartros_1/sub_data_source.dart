@@ -13,7 +13,18 @@ class SubDataSource {
     } catch (e) {
       Get.snackbar("Login failed", "Master not connected",
           snackPosition: SnackPosition.BOTTOM);
-      return RosString(name: "Error");
+      return const RosString(name: "Error");
+    }
+  }
+
+  Future<RosString> setParam(paramName,param) async {
+    try {
+      await ros.node.setParam(paramName, param);
+      return const RosString(name: "Success");
+    } catch (e) {
+      Get.snackbar("Login failed", "Master not connected",
+          snackPosition: SnackPosition.BOTTOM);
+      return const RosString(name: "Error");
     }
   }
 }
