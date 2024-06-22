@@ -43,38 +43,66 @@ class _ParamPageState extends State<ParamPage> {
 
   @override
   Widget build(BuildContext context) {
+    final TextEditingController _paramName = TextEditingController();
+    final TextEditingController _param = TextEditingController();
     final controller = Get.put(ParamController());
     return Scaffold(
-        appBar: AppBar(
-          backgroundColor: Theme.of(context).colorScheme.inversePrimary,
-          title: Text(widget.title),
+      appBar: AppBar(
+        backgroundColor: Theme.of(context).colorScheme.inversePrimary,
+        title: Text(widget.title),
+      ),
+      body: Center(
+        // Center is a layout widget. It takes a single child and positions it
+        // in the middle of the parent.
+        child: Column(
+          mainAxisAlignment: MainAxisAlignment.center,
+          children: <Widget>[
+            Column(
+              children: [
+                ListTile(
+                  title: TextField(
+                    controller: _paramName,
+                    decoration: const InputDecoration(
+                      labelText: 'Set param Name',
+                    ),
+                  ),
+                ),
+                ListTile(
+                  title: TextField(
+                    controller: _param,
+                    decoration: const InputDecoration(
+                      labelText: 'Set Param',
+                    ),
+                  ),
+                ),
+                ElevatedButton(
+                  onPressed: () async {
+                    await controller.setParam(_paramName.text, _param.text);
+                  },
+                  child: const Text('Submit'),
+                ),
+              ],
+            ),
+            Obx(() {
+              return Text(
+                'The current param value - ${controller.paramValue}',
+              );
+            }),
+            Text(
+              '$_counter',
+              style: Theme.of(context).textTheme.headlineMedium,
+            ),
+          ],
         ),
-        body: Center(
-          // Center is a layout widget. It takes a single child and positions it
-          // in the middle of the parent.
-          child: Column(
-            mainAxisAlignment: MainAxisAlignment.center,
-            children: <Widget>[
-              Obx(() {
-                return Text(
-                  'The current param value - ${controller.paramValue}',
-                );
-              }),
-              Text(
-                '$_counter',
-                style: Theme.of(context).textTheme.headlineMedium,
-              ),
-            ],
-          ),
-        ),
-        floatingActionButton: FloatingActionButton(
-          onPressed: () {
-            controller.getFoo();
-          },
-          tooltip: 'Increment',
-          child: const Icon(Icons.add),
-        ), // This trailing comma makes auto-formatting nicer for build methods.
-        drawer: const RosDrawer(),
+      ),
+      floatingActionButton: FloatingActionButton(
+        onPressed: () {
+          controller.getFoo();
+        },
+        tooltip: 'Increment',
+        child: const Icon(Icons.add),
+      ), // This trailing comma makes auto-formatting nicer for build methods.
+      drawer: const RosDrawer(),
     );
   }
 }

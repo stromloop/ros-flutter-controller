@@ -9,4 +9,7 @@ class SubRepositoryImpl implements RosSubRepo {
   SubRepositoryImpl(this._subDataSource);
   @override
   Future<RosString> getParam() => _subDataSource.getParam();
+  @override
+  Future<RosString> setParam(paramName, paramValue) =>
+      _subDataSource.setParam(paramName,paramValue);
 }

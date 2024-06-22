@@ -4,10 +4,24 @@ import 'package:ros_flutter/data/data_source/dartros_1/sub_data_source.dart';
 
 class ParamController extends GetxController {
   final paramValue = ''.obs;
+  final dataSource = locator<SubDataSource>();
+
   Future<void> getFoo() async {
-    final dataSource = locator<SubDataSource>();
     final param = await dataSource.getParam();
+    print("paramName : ${param.name}");
     print("Getting Param");
     paramValue.value = param.name;
+  }
+
+  Future<void> setParam(String paramName, String param) async {
+    if (paramName.isEmpty || param.isEmpty) {
+      Get.snackbar(
+        "Error",
+        "Both fields must be filled",
+        snackPosition: SnackPosition.BOTTOM,
+      );
+      return;
+    }
+    await dataSource.setParam(paramName, param);
   }
 }
