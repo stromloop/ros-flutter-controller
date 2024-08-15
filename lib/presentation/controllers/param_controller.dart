@@ -5,7 +5,7 @@ import 'package:ros_flutter/data/data_source/dartros_1/sub_data_source.dart';
 class ParamController extends GetxController {
   final paramValue = ''.obs;
   final dataSource = locator<SubDataSource>();
-
+  final subDataString = "".obs;
   Future<void> getFoo() async {
     final param = await dataSource.getParam();
     print("paramName : ${param.name}");
@@ -23,5 +23,11 @@ class ParamController extends GetxController {
       return;
     }
     await dataSource.setParam(paramName, param);
+  }
+  void pubString (){
+  	dataSource.pubString("/hello", "Hello world");
+  }
+  void subString(){
+	dataSource.subString("/chatter",subDataString);
   }
 }

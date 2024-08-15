@@ -88,16 +88,21 @@ class _ParamPageState extends State<ParamPage> {
                 'The current param value - ${controller.paramValue}',
               );
             }),
-            Text(
-              '$_counter',
-              style: Theme.of(context).textTheme.headlineMedium,
-            ),
+	    ElevatedButton(onPressed: (){
+		controller.pubString();
+	    }, child: const Text("Publish")),
+            Obx(() {
+              return Text(
+                'The current Subscribed value - ${controller.subDataString}',
+              );
+            }),
           ],
         ),
       ),
       floatingActionButton: FloatingActionButton(
         onPressed: () {
           controller.getFoo();
+	  controller.subString();
         },
         tooltip: 'Increment',
         child: const Icon(Icons.add),

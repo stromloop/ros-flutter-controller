@@ -1,7 +1,7 @@
 import 'package:get/get.dart';
 import 'package:ros_flutter/domain/models/string.dart';
 import 'package:ros_flutter/utils/resources/ros_node.dart';
-
+import 'package:std_msgs/msgs.dart';
 class SubDataSource {
   RosHandler ros;
   SubDataSource(this.ros);
@@ -26,5 +26,19 @@ class SubDataSource {
           snackPosition: SnackPosition.BOTTOM);
       return const RosString(name: "Error");
     }
+  }
+  void pubString(String topic,String payload){
+  final strMsg = StringMessage(data: payload);
+  final pub =
+      ros.node.advertise<StringMessage>(topic, StringMessage.$prototype);
+    pub.publish(strMsg, 1);
+  }
+
+  void subString(String topic,RxString dataRef){
+  final sub = ros.node.subscribe<StringMessage>(
+      '/chatter', StringMessage.$prototype, (message) {
+    print('Got ${message.data}');
+    dataRef.value = message.data;
+  });
   }
 }
