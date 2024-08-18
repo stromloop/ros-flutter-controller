@@ -33,9 +33,9 @@ class RosDrawer extends StatelessWidget {
             onTap: () {context.go(RoutePath.home);},
           ),
           ListTile(
-            leading: const Icon(Icons.account_circle),
+            leading: const Icon(Icons.car_rental),
             title: const Text('Profile'),
-            onTap: () {},
+            onTap: () {context.go(RoutePath.navigation);},
           ),
           ListTile(
             leading: const Icon(Icons.settings),
