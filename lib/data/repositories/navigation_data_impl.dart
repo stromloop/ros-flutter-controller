@@ -2,6 +2,7 @@ import 'package:get/get_rx/src/rx_types/rx_types.dart';
 import 'package:injectable/injectable.dart';
 import 'package:ros_flutter/data/data_source/dartros_1/navigation_data_source.dart';
 import 'package:ros_flutter/domain/models/occupancy_grid.dart';
+import 'package:ros_flutter/domain/models/twist.dart';
 import 'package:ros_flutter/domain/repositories/navigation_repo.dart';
 
 @Injectable(as: RosNavRepo)
@@ -14,4 +15,7 @@ class RosNavRepoImpl implements RosNavRepo {
       _navDataSource.subMap(topic, dataRef);
   @override
   Future<RosOccupancyGrid> getMapData() => _navDataSource.getMap();
+  @override
+  void pubVelocity(String topic, RosTwist velocity) =>
+      _navDataSource.pubVelocity(topic, velocity);
 }

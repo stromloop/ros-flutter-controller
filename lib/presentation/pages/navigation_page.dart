@@ -1,8 +1,10 @@
 import 'dart:ffi';
 
+import 'package:flutter/cupertino.dart';
 import 'package:flutter/foundation.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/widgets.dart';
+import 'package:flutter_joystick/flutter_joystick.dart';
 import 'package:get/get.dart';
 import 'dart:ui' as ui;
 import 'package:ros_flutter/presentation/controllers/navigation_controller.dart';
@@ -24,23 +26,30 @@ class _NavigationPageState extends State<NavigationPage> {
       appBar: AppBar(
         title: const Text("Navigation"),
       ),
-      body: Obx(() {
-        if (controller.mapImage.value != null) {
-          return InteractiveViewer(
-            maxScale: 6,
-            minScale: 0.3,
-            child: Container(
-              width: double.infinity,
-              height: double.infinity,
-              child: CustomPaint(
-                painter: MapPainter(controller.mapImage.value!),
+      body: Stack(children: [
+        Obx(() {
+          if (controller.mapImage.value != null) {
+            return InteractiveViewer(
+              maxScale: 6,
+              minScale: 0.3,
+              child: Container(
+                width: double.infinity,
+                height: double.infinity,
+                child: CustomPaint(
+                  painter: MapPainter(controller.mapImage.value!),
+                ),
               ),
-            ),
-          );
-        } else {
-          return const CircularProgressIndicator();
-        }
-      }),
+            );
+          } else {
+            return const CircularProgressIndicator();
+          }
+        }),
+        Positioned(
+            bottom: 20,
+            child: Joystick(listener: (listener) {
+              controller.pubVelocity(listener);
+            }))
+      ]),
       floatingActionButton: FloatingActionButton(
         onPressed: () {
           controller.subMap();

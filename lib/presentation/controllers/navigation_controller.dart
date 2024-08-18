@@ -5,6 +5,7 @@ import 'package:flutter/widgets.dart';
 import 'package:get/get.dart';
 import 'package:ros_flutter/config/injection/injection.dart';
 import 'package:ros_flutter/domain/models/occupancy_grid.dart';
+import 'package:ros_flutter/domain/models/twist.dart';
 import 'package:ros_flutter/domain/repositories/navigation_repo.dart';
 import 'dart:ui' as ui;
 
@@ -17,6 +18,14 @@ class NavigationController extends GetxController {
     final img = await getMapAsImage(Colors.black, Colors.white);
     mapImage.value = img;
     print(map.data);
+  }
+
+  void pubVelocity(listener) {
+    navDataSource.pubVelocity(
+        "/cmd_vel",
+        RosTwist()
+          ..linear.x = listener.x
+          ..linear.y = listener.y);
   }
 
   Future<ui.Image> getMapAsImage(final Color fill, final Color border) {

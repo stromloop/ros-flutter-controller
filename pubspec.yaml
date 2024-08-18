@@ -49,6 +49,7 @@ dependencies:
   geometry_msgs: ^0.1.0
   nav_msgs:
     path: ./lib/data/data_source/dartros_1/msgs/nav_msgs
+  flutter_joystick: ^0.2.1
 dev_dependencies:
   flutter_test:
     sdk: flutter
