@@ -1,0 +1,17 @@
+# Auto-generated. Do not edit!
+
+# Updated: Sun Aug 18 08:47:58 2024
+
+
+name: geometry_msgs
+description: A ros geometry_msgs message package for dartros
+version: 0.1.0
+repository: https://github.com/TimWhiting/geometry_msgs_dart
+
+environment:
+  sdk: '>=3.0.3 <4.0.0'
+
+dependencies:
+  buffer: ^1.2.0
+  dartros_msgutils: ">=0.1.0 <0.2.0"
+  std_msgs: ">=0.1.0 <0.2.0"
