@@ -1,9 +1,4 @@
-import 'dart:ffi';
-
-import 'package:flutter/cupertino.dart';
-import 'package:flutter/foundation.dart';
 import 'package:flutter/material.dart';
-import 'package:flutter/widgets.dart';
 import 'package:flutter_joystick/flutter_joystick.dart';
 import 'package:get/get.dart';
 import 'dart:ui' as ui;
@@ -31,7 +26,7 @@ class _NavigationPageState extends State<NavigationPage> {
           if (controller.mapImage.value != null) {
             return InteractiveViewer(
               maxScale: 6,
-              minScale: 0.3,
+              minScale: 1,
               child: Container(
                 width: double.infinity,
                 height: double.infinity,
@@ -67,24 +62,22 @@ class MapPainter extends CustomPainter {
   @override
   void paint(Canvas canvas, ui.Size size) {
     //TODO get height from map topic
-    const width = 384;
-    const height = 384;
+    const width = 4000;
+    const height = 4000;
     // Define your custom painting operations using canvas methods
-    canvas.translate(width / 2, height / 2.5);
-    canvas.rotate(radians(180));
-    canvas.translate(-width / 2, -height / 2);
-    canvas.scale(1, -1);
-    canvas.translate(0, -height.toDouble());
-
-    final paint = Paint()
-      ..color = Colors.blue
-      ..strokeWidth = 2.0
-      ..style = PaintingStyle.fill;
-    canvas.translate(0, 0);
-    canvas.drawImage(map, Offset.zero, Paint());
+    // Calculate the position to center the image
+    final double dx = (size.width - 4000) / 2;
+    final double dy = (size.height - 4000) / 2;
+    //print("${map.height},${map.width} => ${size.height}, ${size.width}");
+    paintImage(
+      canvas: canvas,
+      rect: Rect.fromLTWH(0, 0, size.width, size.height),
+      scale: 0.1,
+      image: map,
+      fit: BoxFit.cover,
+    );
+    //print("${size.width} , ${size.height}");
     // Add more custom painting operations as needed
-    canvas.drawRect(Rect.fromCenter(center: Offset.zero, width: 10, height: 10),
-        Paint()..color = Colors.blue);
   }
 
   @override

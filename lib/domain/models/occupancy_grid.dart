@@ -2,13 +2,20 @@
 import 'dart:io';
 import 'dart:typed_data';
 import 'dart:ui';
-import 'package:flutter/material.dart';
+import 'dart:ui' as ui;
+import 'dart:async';
 
 class RosOccupancyGrid {
   double? resolution;
   int? width;
   int? height;
   List<int> data = [];
+  Future<ui.Image> getMapAsImage(final Color fill, final Color border) {
+    final completer = Completer<ui.Image>();
+    ui.decodeImageFromPixels(toRGBA(fill, border), width ?? 0, width ?? 0,
+        ui.PixelFormat.rgba8888, completer.complete);
+    return completer.future;
+  }
 
   Uint8List toRGBA(Color border, Color fill) {
     var buffor = BytesBuilder();
