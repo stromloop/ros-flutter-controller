@@ -2,12 +2,12 @@ name: flutter-ros test
 
 on:
   push:
-        branches:
-            - main
+    branches:
+      - main
   pull_request:
-        branches: 
-            - main
-            
+    branches:
+      - main
+
 jobs:
     test:
       runs-on: ubuntu-latest
@@ -33,9 +33,9 @@ jobs:
           with: 
               flutter-version: '3.19.0'
 
-        - name: install flutter deps
+        - name: Install flutter deps
           run:  flutter pub get
 
-        - name: run flutter tests
+        - name: Run flutter tests
           run:  flutter test
 
