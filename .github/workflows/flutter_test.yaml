@@ -4,7 +4,7 @@ on:
   push:
     branches:
       - main
-      - '**' # to run workflows on all branches
+      - '**'
   pull_request:
     branches:
       - main
@@ -13,27 +13,27 @@ jobs:
   test:
     runs-on: ubuntu-latest
     container:
-      image: ros:noetic-ros-base #docker osrf image does not exist in docker 
+      image: ros:noetic-ros-base
 
     steps:
       - name: Checkout repository
         uses: actions/checkout@v4
 
-      - name: setup ROS
-        run: bash -c "source /opt/ros/noetic/setup.bash"
-        # used bash because gitHub actions by default runs commands in sh, which does not support source
+      - name: Setup ROS
+        run: |
+          echo "source /opt/ros/noetic/setup.bash" >> ~/.bashrc
+          source ~/.bashrc
 
-      - name: Install jq # necessary to read json data in our application
-        run: sudo apt-get update && sudo apt-get install -y jq
+      - name: Install Dependencies (jq & curl)
+        run: apt-get update && apt-get install -y jq curl
 
-      - name: setup flutter
+      - name: Setup Flutter
         uses: subosito/flutter-action@v2
         with:
           flutter-version: '3.19.0'
 
-      - name: install flutter dependencies
+      - name: Install Flutter Dependencies
         run: flutter pub get
 
-      - name: run flutter tests
+      - name: Run Flutter Tests
         run: flutter test
-
