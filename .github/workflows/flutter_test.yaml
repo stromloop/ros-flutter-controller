@@ -4,7 +4,7 @@ on:
   push:
     branches:
       - main
-      - '**'
+      - '**' #runs github workflow on all branches in forked repo
   pull_request:
     branches:
       - main
@@ -33,6 +33,9 @@ jobs:
         uses: subosito/flutter-action@v2
         with:
           flutter-version: '3.19.0'
+      
+      - name: Mark Flutter directory as safe
+        run: git config --global --add safe.directory /__t/flutter/stable-3.19.0-x64
 
       - name: install flutter dependencies
         run: flutter pub get
