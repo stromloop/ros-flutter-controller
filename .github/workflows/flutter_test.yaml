@@ -1,4 +1,4 @@
-name: flutter-ros-test
+name: flutter-ros test
 
 on:
   push:
@@ -12,27 +12,25 @@ on:
 jobs:
   test:
     runs-on: ubuntu-latest
-    
     container:
-      image: osrf/ros:noetic
+      image: ros:noetic-ros-base
 
     steps:
       - name: Checkout repository
         uses: actions/checkout@v4
 
-      - name: Setup Flutter
+      - name: setup ROS
+        run: |
+          source /opt/ros/noetic/setup.bash
+
+      - name: setup flutter
         uses: subosito/flutter-action@v2
         with:
           flutter-version: '3.19.0'
 
-      - name: Install dependencies
-        run: |
-          apt update && apt install -y curl
-          source /opt/ros/noetic/setup.bash
-
-      - name: Install Flutter dependencies
+      - name: install flutter dependencies
         run: flutter pub get
 
-      - name: Run Flutter tests
+      - name: run flutter tests
         run: flutter test
 
