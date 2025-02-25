@@ -20,8 +20,8 @@ jobs:
         uses: actions/checkout@v4
 
       - name: setup ROS
-        run: |
-          source /opt/ros/noetic/setup.bash
+        run: bash -c "source /opt/ros/noetic/setup.bash"
+        # used bash because gitHub actions by default runs commands in sh, which does not support source
 
       - name: setup flutter
         uses: subosito/flutter-action@v2
