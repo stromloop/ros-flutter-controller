@@ -19,21 +19,24 @@ jobs:
       - name: Checkout repository
         uses: actions/checkout@v4
 
-      - name: Setup ROS
-        run: |
-          echo "source /opt/ros/noetic/setup.bash" >> ~/.bashrc
-          source ~/.bashrc
+      - name: setup ROS
+        run: bash -c "source /opt/ros/noetic/setup.bash"
+        # used bash because gitHub actions by default runs commands in sh, which does not support source
 
-      - name: Install Dependencies (jq & curl)
-        run: apt-get update && apt-get install -y jq curl
+      - name: Install jq # necessary to read json data in our application
+        run: sudo apt-get update && sudo apt-get install -y jq
 
-      - name: Setup Flutter
+      - name: Install curl
+        run: sudo apt-get install -y curl
+
+      - name: setup flutter
         uses: subosito/flutter-action@v2
         with:
           flutter-version: '3.19.0'
 
-      - name: Install Flutter Dependencies
+      - name: install flutter dependencies
         run: flutter pub get
 
-      - name: Run Flutter Tests
+      - name: run flutter tests
         run: flutter test
+
