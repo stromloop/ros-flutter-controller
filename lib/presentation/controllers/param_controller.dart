@@ -1,10 +1,11 @@
 import 'package:get/get.dart';
 import 'package:ros_flutter/config/injection/injection.dart';
-import 'package:ros_flutter/data/dartros_1/data_source/sub_data_source.dart';
+import 'package:ros_flutter/data/websocket_ros2/data_source/sub_data_source.dart';
+import 'package:ros_flutter/domain/repositories/sub_repos.dart';
 
 class ParamController extends GetxController {
   final paramValue = ''.obs;
-  final dataSource = locator<SubDataSource>();
+  final dataSource = locator<RosSubRepo>();
   final subDataString = "".obs;
   Future<void> getFoo() async {
     final param = await dataSource.getParam();

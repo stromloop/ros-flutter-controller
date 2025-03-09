@@ -531,7 +531,7 @@ packages:
   nav_msgs:
     dependency: "direct main"
     description:
-      path: "lib/data/data_source/dartros_1/msgs/nav_msgs"
+      path: "lib/data/dartros_1/data_source/msgs/nav_msgs"
       relative: true
     source: path
     version: "0.1.0"

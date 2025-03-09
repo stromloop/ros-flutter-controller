@@ -2,7 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:go_router/go_router.dart';
 import 'package:ros_flutter/config/injection/injection.dart';
 import 'package:ros_flutter/utils/constants/route_name.dart';
-import 'package:ros_flutter/data/dartros_1/resources/ros_node.dart';
+import 'package:ros_flutter/data/websocket_ros2/resources/ros_node.dart';
 
 class RosDrawer extends StatelessWidget {
   const RosDrawer({
@@ -45,6 +45,7 @@ class RosDrawer extends StatelessWidget {
             },
           ),
           ListTile(title: TextButton(onPressed: (){
+            // TODO move this to controller and change this init using domain and data source
             final rosHandler = locator<RosHandler>();
             rosHandler.initNode();
           }, child: Text("Connect")))

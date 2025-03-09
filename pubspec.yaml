@@ -48,7 +48,7 @@ dependencies:
   # ros 1 message packages
   geometry_msgs: ^0.1.0
   nav_msgs:
-    path: ./lib/data/data_source/dartros_1/msgs/nav_msgs
+    path: ./lib/data/dartros_1/data_source/msgs/nav_msgs
   flutter_joystick: ^0.2.1
   image: ^4.2.0
   logger: ^1.4.0

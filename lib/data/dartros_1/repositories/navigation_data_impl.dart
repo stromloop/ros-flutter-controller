@@ -5,6 +5,7 @@ import 'package:ros_flutter/domain/models/occupancy_grid.dart';
 import 'package:ros_flutter/domain/models/twist.dart';
 import 'package:ros_flutter/domain/repositories/navigation_repo.dart';
 
+@Named("dartros1")  
 @Injectable(as: RosNavRepo)
 class RosNavRepoImpl implements RosNavRepo {
   final NavDataSource _navDataSource;

@@ -1,9 +1,12 @@
-import 'package:dartros/dartros.dart';
 import 'package:injectable/injectable.dart';
-import 'package:ros_flutter/data/dartros_1/data_source/navigation_data_source.dart';
-import 'package:ros_flutter/data/dartros_1/data_source/sub_data_source.dart';
-import 'package:ros_flutter/data/dartros_1/resources/ros_node.dart';
-import 'package:shared_preferences/shared_preferences.dart';
+//TODO dynamically import or use named singletons 
+// https://pub.dev/packages/injectable#binding-an-abstract-class-to-multiple-implementations
+// import 'package:ros_flutter/data/dartros_1/data_source/navigation_data_source.dart';
+// import 'package:ros_flutter/data/dartros_1/data_source/sub_data_source.dart';
+// import 'package:ros_flutter/data/dartros_1/resources/ros_node.dart';
+import 'package:ros_flutter/data/websocket_ros2/data_source/navigation_data_source.dart';
+import 'package:ros_flutter/data/websocket_ros2/data_source/sub_data_source.dart';
+import 'package:ros_flutter/data/websocket_ros2/resources/ros_node.dart';
 
 @module
 abstract class DataSourceInjectionModule {

@@ -3,6 +3,7 @@ import 'package:ros_flutter/domain/models/string.dart';
 import 'package:injectable/injectable.dart';
 import 'package:ros_flutter/domain/repositories/sub_repos.dart';
 
+@Named("dartros1")  
 @Injectable(as: RosSubRepo)
 class SubRepositoryImpl implements RosSubRepo {
   final SubDataSource _subDataSource;

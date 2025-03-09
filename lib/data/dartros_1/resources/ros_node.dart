@@ -8,7 +8,7 @@ class RosHandler {
   late NodeHandle node;
 
   final SharedPreferences sharedPreferences;
-  Future<NodeHandle> initNode() async {
+  Future<void> initNode() async {
     print("Init Node");
     final master_uri = await sharedPreferences.get("ROS_MASTER_IP");
     print(master_uri);
@@ -17,6 +17,6 @@ class RosHandler {
     node = await dartros.initNode('ros_node2$formattedDate', [],
         //TODO get rosmaster uri from shared pref
         rosMasterUri: "http://${master_uri.toString()}:11311");
-    return node;
+    // return node;
   }
 }
