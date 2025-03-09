@@ -14,15 +14,15 @@ import 'package:ros_flutter/config/injection/data_source_injection.dart'
     as _i13;
 import 'package:ros_flutter/config/injection/register_module.dart' as _i12;
 import 'package:ros_flutter/config/router/app_router.dart' as _i3;
-import 'package:ros_flutter/data/data_source/dartros_1/navigation_data_source.dart'
+import 'package:ros_flutter/data/dartros_1/data_source/navigation_data_source.dart'
     as _i7;
-import 'package:ros_flutter/data/data_source/dartros_1/sub_data_source.dart'
+import 'package:ros_flutter/data/dartros_1/data_source/sub_data_source.dart'
     as _i6;
-import 'package:ros_flutter/data/repositories/navigation_data_impl.dart' as _i9;
-import 'package:ros_flutter/data/repositories/sub_data_impl.dart' as _i11;
+import 'package:ros_flutter/data/dartros_1/repositories/navigation_data_impl.dart' as _i9;
+import 'package:ros_flutter/data/dartros_1/repositories/sub_data_impl.dart' as _i11;
 import 'package:ros_flutter/domain/repositories/navigation_repo.dart' as _i8;
 import 'package:ros_flutter/domain/repositories/sub_repos.dart' as _i10;
-import 'package:ros_flutter/utils/resources/ros_node.dart' as _i5;
+import 'package:ros_flutter/data/dartros_1/resources/ros_node.dart' as _i5;
 import 'package:shared_preferences/shared_preferences.dart' as _i4;
 
 extension GetItInjectableX on _i1.GetIt {

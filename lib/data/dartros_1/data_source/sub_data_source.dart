@@ -1,6 +1,6 @@
 import 'package:get/get.dart';
 import 'package:ros_flutter/domain/models/string.dart';
-import 'package:ros_flutter/utils/resources/ros_node.dart';
+import 'package:ros_flutter/data/dartros_1/resources/ros_node.dart';
 import 'package:std_msgs/msgs.dart';
 class SubDataSource {
   RosHandler ros;

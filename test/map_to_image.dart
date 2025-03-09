@@ -1,6 +1,6 @@
 import 'dart:io';
 import 'dart:typed_data';
-import 'package:ros_flutter/data/data_source/dartros_1/msgs/nav_msgs/lib/src/srvs/GetMap.dart';
+import 'package:ros_flutter/data/dartros_1/data_source/msgs/nav_msgs/lib/src/srvs/GetMap.dart';
 import 'package:dartros/dartros.dart';
 import 'package:intl/intl.dart';
 import 'package:ros_flutter/domain/models/occupancy_grid.dart';

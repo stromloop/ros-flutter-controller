@@ -1,4 +1,4 @@
-import 'package:ros_flutter/data/data_source/dartros_1/sub_data_source.dart';
+import 'package:ros_flutter/data/dartros_1/data_source/sub_data_source.dart';
 import 'package:ros_flutter/domain/models/string.dart';
 import 'package:injectable/injectable.dart';
 import 'package:ros_flutter/domain/repositories/sub_repos.dart';

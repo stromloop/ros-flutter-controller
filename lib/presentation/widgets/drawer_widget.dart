@@ -2,7 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:go_router/go_router.dart';
 import 'package:ros_flutter/config/injection/injection.dart';
 import 'package:ros_flutter/utils/constants/route_name.dart';
-import 'package:ros_flutter/utils/resources/ros_node.dart';
+import 'package:ros_flutter/data/dartros_1/resources/ros_node.dart';
 
 class RosDrawer extends StatelessWidget {
   const RosDrawer({

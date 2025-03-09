@@ -1,6 +1,6 @@
 import 'package:get/get_rx/src/rx_types/rx_types.dart';
 import 'package:injectable/injectable.dart';
-import 'package:ros_flutter/data/data_source/dartros_1/navigation_data_source.dart';
+import 'package:ros_flutter/data/dartros_1/data_source/navigation_data_source.dart';
 import 'package:ros_flutter/domain/models/occupancy_grid.dart';
 import 'package:ros_flutter/domain/models/twist.dart';
 import 'package:ros_flutter/domain/repositories/navigation_repo.dart';

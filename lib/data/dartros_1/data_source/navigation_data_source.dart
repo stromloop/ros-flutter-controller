@@ -1,10 +1,10 @@
 import 'package:get/get.dart';
-import 'package:ros_flutter/data/data_source/dartros_1/msgs/geometry_msgs/lib/src/msgs/Twist.dart';
-import 'package:ros_flutter/data/data_source/dartros_1/msgs/nav_msgs/lib/src/msgs/OccupancyGrid.dart';
-import 'package:ros_flutter/data/data_source/dartros_1/msgs/nav_msgs/lib/src/srvs/GetMap.dart';
+import 'package:ros_flutter/data/dartros_1/data_source/msgs/geometry_msgs/lib/src/msgs/Twist.dart';
+import 'package:ros_flutter/data/dartros_1/data_source/msgs/nav_msgs/lib/src/msgs/OccupancyGrid.dart';
+import 'package:ros_flutter/data/dartros_1/data_source/msgs/nav_msgs/lib/src/srvs/GetMap.dart';
 import 'package:ros_flutter/domain/models/occupancy_grid.dart';
 import 'package:ros_flutter/domain/models/twist.dart';
-import 'package:ros_flutter/utils/resources/ros_node.dart';
+import 'package:ros_flutter/data/dartros_1/resources/ros_node.dart';
 
 class NavDataSource {
   RosHandler ros;
