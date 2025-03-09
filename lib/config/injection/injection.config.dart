@@ -23,18 +23,18 @@ import 'package:ros_flutter/data/dartros_1/repositories/navigation_data_impl.dar
 import 'package:ros_flutter/data/dartros_1/repositories/sub_data_impl.dart'
     as _i9;
 import 'package:ros_flutter/data/websocket_ros2/data_source/navigation_data_source.dart'
-    as _i15;
-import 'package:ros_flutter/data/websocket_ros2/data_source/sub_data_source.dart'
     as _i14;
+import 'package:ros_flutter/data/websocket_ros2/data_source/sub_data_source.dart'
+    as _i13;
 import 'package:ros_flutter/data/websocket_ros2/repositories/navigation_data_impl.dart'
     as _i7;
 import 'package:ros_flutter/data/websocket_ros2/repositories/sub_data_impl.dart'
-    as _i11;
+    as _i15;
 import 'package:ros_flutter/data/websocket_ros2/resources/ros_node.dart'
-    as _i13;
+    as _i12;
 import 'package:ros_flutter/domain/repositories/navigation_repo.dart' as _i4;
 import 'package:ros_flutter/domain/repositories/sub_repos.dart' as _i8;
-import 'package:shared_preferences/shared_preferences.dart' as _i12;
+import 'package:shared_preferences/shared_preferences.dart' as _i11;
 
 extension GetItInjectableX on _i1.GetIt {
 // initializes the registration of main-scope dependencies inside of GetIt
@@ -59,17 +59,18 @@ extension GetItInjectableX on _i1.GetIt {
       () => _i9.SubRepositoryImpl(gh<_i10.SubDataSource>()),
       instanceName: 'dartros1',
     );
-    gh.factory<_i8.RosSubRepo>(() => _i11.SubRepositoryImpl());
-    await gh.factoryAsync<_i12.SharedPreferences>(
+    await gh.factoryAsync<_i11.SharedPreferences>(
       () => registerModule.prefs,
       preResolve: true,
     );
-    gh.singleton<_i13.RosHandler>(
-        () => registerModule.rosHandler(gh<_i12.SharedPreferences>()));
-    gh.singleton<_i14.SubDataSource>(
-        () => dataSourceInjectionModule.subDataSource(gh<_i13.RosHandler>()));
-    gh.singleton<_i15.NavDataSource>(
-        () => dataSourceInjectionModule.navDataSource(gh<_i13.RosHandler>()));
+    gh.singleton<_i12.RosHandler>(
+        () => registerModule.rosHandler(gh<_i11.SharedPreferences>()));
+    gh.singleton<_i13.SubDataSource>(
+        () => dataSourceInjectionModule.subDataSource(gh<_i12.RosHandler>()));
+    gh.singleton<_i14.NavDataSource>(
+        () => dataSourceInjectionModule.navDataSource(gh<_i12.RosHandler>()));
+    gh.factory<_i8.RosSubRepo>(
+        () => _i15.SubRepositoryImpl(gh<_i13.SubDataSource>()));
     return this;
   }
 }

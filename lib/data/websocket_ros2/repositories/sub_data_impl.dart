@@ -1,3 +1,4 @@
+import 'package:ros_flutter/data/websocket_ros2/data_source/sub_data_source.dart';
 import 'package:ros_flutter/domain/models/string.dart';
 import 'package:injectable/injectable.dart';
 import 'package:ros_flutter/domain/repositories/sub_repos.dart';
@@ -5,6 +6,8 @@ import 'package:logger/logger.dart';
 
 @Injectable(as: RosSubRepo)
 class SubRepositoryImpl implements RosSubRepo {
+  final SubDataSource _subDataSource;
+  SubRepositoryImpl(this._subDataSource);
   var logger = Logger(level: Level.debug); // Set verbosity to debug
 
   @override
@@ -21,11 +24,11 @@ class SubRepositoryImpl implements RosSubRepo {
 
   @override
   void pubString(String topic, payload) {
-    logger.d("place holder");
+    _subDataSource.pubString("topic", "Hello");
   }
 
   @override
   void subString(topic, dataRef) {
-    logger.d("place holder");
+    _subDataSource.subString(topic, dataRef);
   }
 }

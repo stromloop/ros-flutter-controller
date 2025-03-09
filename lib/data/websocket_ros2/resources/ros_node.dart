@@ -10,7 +10,6 @@ class RosHandler {
     print("Init Node");
     final master_uri = await sharedPreferences.get("ROS_MASTER_IP");
     print(master_uri);
-      final uri = Uri.parse('ws://$master_uri:9090'); // ROSBridge WebSocket URL
-
+      nodeUri = Uri.parse('ws://$master_uri:9090'); // ROSBridge WebSocket URL
   }
 }
