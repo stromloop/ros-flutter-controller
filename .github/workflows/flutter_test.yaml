@@ -1,0 +1,45 @@
+name: flutter-ros test
+
+on:
+  push:
+    branches:
+      - main
+      - '**' #runs github workflow on all branches in forked repo
+  pull_request:
+    branches:
+      - main
+
+jobs:
+  test:
+    runs-on: ubuntu-latest
+    container:
+      image: ros:noetic-ros-base
+
+    steps:
+      - name: Checkout repository
+        uses: actions/checkout@v4
+
+      - name: setup ROS
+        run: bash -c "source /opt/ros/noetic/setup.bash"
+        # used bash because gitHub actions by default runs commands in sh, which does not support source
+
+      - name: Install jq # necessary to read json data in our application
+        run: sudo apt-get update && sudo apt-get install -y jq
+
+      - name: Install curl,git
+        run: sudo apt-get install -y curl git
+
+      - name: setup flutter
+        uses: subosito/flutter-action@v2
+        with:
+          flutter-version: '3.19.0'
+      
+      - name: Mark Flutter directory as safe
+        run: git config --global --add safe.directory /__t/flutter/stable-3.19.0-x64
+
+      - name: install flutter dependencies
+        run: flutter pub get
+
+      - name: run flutter tests
+        run: flutter test
+
