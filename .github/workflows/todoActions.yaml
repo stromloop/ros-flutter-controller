@@ -10,6 +10,8 @@ jobs:
     runs-on: ubuntu-latest
 
     steps:
+        - name: npm install - for mongodb
+          run:  npm install mongodb
         - uses: actions/checkout@v1
         - name: todo-actions
           uses: dtinth/todo-actions@master
