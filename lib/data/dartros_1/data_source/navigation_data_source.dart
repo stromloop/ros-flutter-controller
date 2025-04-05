@@ -27,7 +27,7 @@ class NavDataSource {
       ..linear.x = velocity.linear.x
       ..linear.y = velocity.linear.y
       ..angular.z = velocity.angular.z;
-    // TODO create a single pub instance
+    // TODO: create a single pub instance
     final pub = ros.node.advertise<Twist>("/cmd_vel", Twist.$prototype);
     pub.publish(velMsg, 1);
   }

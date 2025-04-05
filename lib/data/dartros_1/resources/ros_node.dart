@@ -15,7 +15,7 @@ class RosHandler {
     DateTime now = DateTime.now();
     String formattedDate = DateFormat('kkmmss').format(now);
     node = await dartros.initNode('ros_node2$formattedDate', [],
-        //TODO get rosmaster uri from shared pref
+        // TODO: get rosmaster uri from shared pref
         rosMasterUri: "http://${master_uri.toString()}:11311");
     // return node;
   }

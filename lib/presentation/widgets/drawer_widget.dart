@@ -45,7 +45,7 @@ class RosDrawer extends StatelessWidget {
             },
           ),
           ListTile(title: TextButton(onPressed: (){
-            // TODO move this to controller and change this init using domain and data source
+            // TODO: move this to controller and change this init using domain and data source
             final rosHandler = locator<RosHandler>();
             rosHandler.initNode();
           }, child: Text("Connect")))

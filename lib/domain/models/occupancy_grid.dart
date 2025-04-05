@@ -1,4 +1,4 @@
-// TODO check the possible use cases of freezed annotation
+// TODO: check the possible use cases of freezed annotation
 import 'dart:io';
 import 'dart:typed_data';
 import 'dart:ui';
