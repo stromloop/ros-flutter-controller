@@ -28,6 +28,6 @@ void main() {
   });
 }
 
-//TODO: test block - actions todo trigger
+// TODO: test block - actions todo trigger
 // foo - bar test block to check the todo tasks
 // being updated as a issue over github actions
