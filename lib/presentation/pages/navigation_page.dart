@@ -61,7 +61,7 @@ class MapPainter extends CustomPainter {
   MapPainter(this.map);
   @override
   void paint(Canvas canvas, ui.Size size) {
-    // TODO: get height from map topic
+    // TODO [$67f0ddff67cc250008914f0d]: get height from map topic
     const width = 4000;
     const height = 4000;
     // Define your custom painting operations using canvas methods
